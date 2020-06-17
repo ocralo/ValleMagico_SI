@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Portal City</title>
+    <script src="vue/vue.min.js"></script>
+    <script src="./main.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="d-flex flex-column justify-content-center">
+    <div class="container my-2 overflow-auto contenido"  id="app">
+      <div class="row">
+        <div
+          class="card col-12 col-md-10 mx-auto bg-white-75 p-sm-5" style="border:none;"
+        >
+          <button class="back" @click="goHome" v-if="windowStatus!==0"></button>
+          <div class="text-center icon-container mt-3 mb-5 cityknow">
+            <img src="./img/logo.png" :class="'logocity '+ (windowStatus!==0?'logocity-margin':'')" alt="logo" srcset="" />
+          </div>
+          <h4 v-if="window[windowStatus].info">{{window[windowStatus].info}}</h4>
+          <div class="row py-2 px-md-5 px-2 text-center mb-5 justify-content-center botones" >
+            <div
+              class="d-flex flex-column col-md-3 col-6" 
+              v-for="button in window[windowStatus].buttons"
+              :style="button.parentStyle"
+            >
+              <button
+                :class="button.class+' p-2 m-3'"
+                @click="btnOnAction(button.action)"
+              >
+                <img :src="button.img" :alt="button.label" srcset="" />
+              </button>
+              <label class="h5">{{button.label}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

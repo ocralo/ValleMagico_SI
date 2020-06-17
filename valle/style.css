@@ -1,0 +1,151 @@
+body{
+    background-image: url('./img/bg-06.png');
+    background-size: auto;
+    height: 100vh;
+    margin:auto auto;   
+}
+img{
+    width: fit-content;
+    padding-bottom: 10px;
+}
+
+h4{
+    text-align:center;
+    font-weight: bold;
+    color: #4A4948;
+}
+
+.h5{
+    font-weight: bold;
+    color: #4A4948;
+}
+
+.logocity{
+    height:12rem;
+    width:15rem;
+    margin-bottom: 3rem;
+}
+.bg-white-75{
+    background-image: url('./img/table.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.contenido{
+    max-width: 95% !important;
+    max-height: 95% !important; 
+    padding-top: 1rem;  
+}
+.cityknow{
+    margin-top: 5px !important;
+    margin-bottom: 2px !important;
+}
+
+.botones{
+    margin-top: 5px;
+}
+
+.border-rounded{
+    border-radius: 3em;
+    padding-top: 1rem !important; 
+    max-height:  90% !important;
+}
+.back{
+    background-image: url(./img/back_arrow.png);
+    background-color: transparent;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*width: 7em;
+    height: 7em;*/
+    width:5rem;
+    height:5rem;
+    position: absolute;
+    border: none;
+    top: 2em;
+    left: 4em;
+}
+.btn-city{
+    /* background-image: url(./img/btn.png); */
+    background-color: transparent;
+    /* background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; */
+    /*min-width: 8em;
+0    min-height: 9em; */
+    display:block;
+    margin:0.25em auto !important;
+    height: 10rem;
+    width: 10rem;   
+    border: none;
+    transition: .25s
+}
+.btn2-city{
+    /* background-image: url(./img/btn2.png); */
+    background-color: transparent;
+    /* background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; */
+    display:block;
+    margin:0.25em auto !important;
+   /* min-width: 8em;
+    min-height: 9em;
+    max-width: 16em;
+    max-height: 18em;  */
+    height: 10rem;
+    width: 10rem;  
+    border: none;
+    transition: .25s
+}
+
+/* .width-btn{
+    max-width: 20%;
+} */
+
+.btn-city:focus, .btn2-city:focus,.back:focus{
+    outline: none;
+    /* transform: scale(0.75); */
+}
+.btn-city:hover, .btn2-city:hover{
+    transform: scale(1.05);
+}
+.btn-city img{
+    max-width: 100%;
+}
+.btn2-city img{
+    max-width: 100%;
+}
+.icon-container img{
+    max-width: 20em;
+}
+
+
+
+.locked{
+    opacity: 0.75;
+    pointer-events: none;
+    position: relative;
+}
+.locked::after{
+    position: absolute;
+    background-image: url(./img/locked.png);
+    background-color: transparent;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    content: ' ';
+    width: 4em;
+    height: 4em;
+    top: -16px;
+    right: 26%;
+}
+@media (max-width: 425px) {
+    .logocity{
+        height:10rem;
+        width:12rem;
+    }
+    .logocity-margin{
+        margin-left:5em;
+    }
+  }

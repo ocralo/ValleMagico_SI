@@ -1,0 +1,54 @@
+/* @media screen and (max-width:768px){
+    .content-Bar{
+        display:none!important;
+    }
+} */
+
+:root {
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --notColor: #343a4000;
+    --disable: #a2a2a2ab;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Nunito", sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+
+    --primayColor: #00b2bf;
+    --secondColor: #00a3af;
+    --lightColor: #ecf8f9;
+    --darkColor: #005c63;
+}
+
+.fa-1x {
+    font-size: 1.5rem;
+    }
+    .navbar-toggler.toggler-example {
+    cursor: pointer;
+    }
+    .dark-blue-text {
+    color: #0A38F5;
+    }
+    .dark-pink-text {
+    color: #AC003A;
+    }
+    .dark-amber-text {
+    color: #ff6f00;
+    }
+    .dark-teal-text {
+    color: #004d40;
+    }
+
+    .icon{
+        padding:10px;
+    }
+
+
+

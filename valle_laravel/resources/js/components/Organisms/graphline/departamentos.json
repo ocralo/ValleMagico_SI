@@ -1,0 +1,12 @@
+{
+    "departamentos" : [
+            {
+                "nombre" : "valle del cauca",
+                "puntajes" : 20
+            },
+            {
+                "nombre" : "cauca",
+                "puntajes" : 30
+            }
+    ]
+}

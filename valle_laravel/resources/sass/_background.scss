@@ -1,0 +1,46 @@
+.content-Page {
+    background-image: url("../img/background_transparent.png") !important;
+    background-color: var(--white) !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0px;
+    overflow: auto;
+    height: 100vh;
+    width: 100vw;
+}
+
+.section-listSearch {
+    background-color: #c5bcac;
+    float: left !important;
+    position: fixed !important;
+    z-index: 2;
+    padding: 1em 0;
+    padding-bottom: 0px;
+    overflow: auto;
+    @media (max-width: 768px) {
+
+        position: relative !important;
+    }
+}
+
+.img-fluid{
+    width: 20em;
+    height: auto;
+}
+
+/* Modal */
+.modal-content {
+    height: 80%;
+  }
+
+  /* icono imprimir */
+
+  .icon-imprimir{
+    width: 1.3em;
+  }
+
+/* Acordeon */
+.card-faq{
+    margin: 0.5em 0em 0em 0.5em;
+}

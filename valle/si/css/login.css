@@ -1,0 +1,166 @@
+:root {
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Nunito", sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+
+    --primayColor: #00b2bf;
+    --secondColor: #00a3af;
+    --lightColor: #ecf8f9;
+    --darkColor: #005c63;
+    --coffeColor: #695f53;
+}
+
+.card {
+    background-color: transparent !important;
+    border: none;
+}
+
+.btn-primary {
+    border: none;
+}
+
+.card-body-login {
+    background-image: url("../img/backgroundCard.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+@media (max-width: 768px) {
+    .card-body-login {
+        background-image: none;
+    }
+}
+
+.card-register-body {
+    background-image: url("../img/backgroundCard3.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 500px;
+    padding: 3em 0em 4em 0em;
+    max-height: 26em;
+}
+
+@media (max-width: 576px) {
+    .card-register-body {
+        background-image: url("../img/backgroundCard4.png");
+        width: 300px;
+        padding: 4em 0em 4em 0em;
+        max-height: 34em;
+    }
+}
+
+body {
+    background-color: var(--lightColor);
+}
+
+.content-page {
+    background-image: url("../img/backgroundLogin.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .content-page {
+        background-image: url("../img/backgroundCard2.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+.content-cardLogin {
+    height: 100vh;
+}
+
+/* Styles Input-Group */
+
+.input-group-text {
+    border: none !important;
+    background-color: var(--white);
+    padding: 0;
+    color: var(--coffeColor);
+}
+
+.form-control {
+    border: none !important;
+}
+
+/* button Styles */
+
+.btn-link {
+    margin: 0.1em;
+}
+
+.btn-primary {
+    background-color: var(--coffeColor);
+    width: 20rem;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+    /* border-radius: 4em; */
+}
+
+.btn-primary:hover {
+    background-color: #4b4236;
+}
+.btn-primary:active {
+    background-color: #4b4236 !important;
+}
+.btn-primary:focus {
+    background-color: #4b4236 !important;
+}
+
+/* Check  */
+
+.custom-control-input {
+    border: none !important;
+}
+
+.custom-control-label {
+    color: var(--lightColor);
+}
+
+.btn-link {
+    color: var(--lightColor);
+}
+
+/* ------------------------------------------ Forgot password */
+
+.container-fluid {
+    height: 100vh;
+}
+
+.container-page-login{
+    background-image: url("../img/backgroundLogin.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* .container .card {
+    margin: 10%;
+    background-color: var(--lightColor);
+}
+
+.container .card h4 {
+    margin-top: .5em;
+    text-align: center;
+} */
+
+/* ------------------------------------------ Forgot password  --------------------- Exit*/

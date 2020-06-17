@@ -1,0 +1,18 @@
+.btn-search {
+    border: none !important;
+    background-color: #8B684A;
+}
+
+.btn-search:hover {
+    border: none;
+    background-color: #5e432b !important;
+    color: var(--secondColor);
+}
+
+// Buttons Generate Inform  -------------------------------------
+
+.btn-generate-inform {
+    border-radius: 100% !important;
+    background-color: $none-color;
+    color: $white-color;
+}

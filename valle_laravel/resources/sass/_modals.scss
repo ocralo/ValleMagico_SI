@@ -1,0 +1,20 @@
+
+.modal-header {
+    align-items: flex-start;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    color: $white-color;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+    background-color: $dark-color;
+
+    .close {
+        color: $white-color;
+        padding: 1rem 1rem;
+        margin: -1rem -1rem -1rem auto;
+        &:hover{
+            color: $white-color;
+        }
+    }
+
+}

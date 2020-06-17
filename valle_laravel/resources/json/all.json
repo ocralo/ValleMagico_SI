@@ -1,0 +1,152 @@
+{
+    "Users": [
+
+    ],
+    "Roles": [
+
+    ],
+    "Department" : [
+        {
+            "name": "Valle del Cauca",
+            "id": 1
+          },
+          {
+            "name": "Cauca",
+            "id": 2
+          }
+    ],
+    "Towns" : [
+        {
+            "name": "Cali",
+            "id": 1
+        },
+        {
+            "name": "Popayan",
+            "id": 2
+        },
+        {
+            "name": "Buenaventura",
+            "id": 3
+        },
+        {
+            "name": "Bolívar",
+            "id": 4
+        }
+    ],
+    "Institutions" : [
+        {
+            "name": "I.E. LA HERRADURA",
+            "id": 1
+        },
+        {
+            "name": "INSTITUCION EDUCATIVA EL TABLON",
+            "id": 2
+        },
+        {
+            "name": "I.E. SINAI",
+            "id": 3
+        },
+        {
+            "name": "I.E.T. MIGUEL ZAPATA (ANTES I.E. MIGUEL ZAPATA",
+            "id": 4
+        }
+    ],
+    "Headquarters" : [
+        {
+            "name": "LA HERRADURA (sede principal)",
+            "id": 1
+        },
+        {
+            "name": "EL TABLON (sede principal)",
+            "id": 2
+        },
+        {
+            "name": "LLACUANAS (sede principal)",
+            "id": 3
+        },
+        {
+            "name": "SINAI (sede principal)",
+            "id": 4
+        }
+    ],
+    "Groups" : [
+        {
+            "name": "Grado 1 - LA HERRADURA (sede principal)",
+            "id": 1
+        },
+        {
+            "name": "Grado 2 - EL TABLON (sede principal)",
+            "id": 2
+        },
+        {
+            "name": "Grado 1 - LLACUANAS (sede principal)",
+            "id": 3
+        },
+        {
+            "name": " Grado 1 - SINAI (sede principal)",
+            "id": 4
+        }
+    ],
+    "Students" : [
+        {
+            "name": "GUAMANGA IMBACHI NORA LIYAN",
+            "id": 1
+        },
+        {
+            "name": "HERNANDEZ GOMEZ ISMENIA ",
+            "id": 2
+        },
+        {
+            "name": "HOYOS GALLARDO DIDIMO ",
+            "id": 3
+        },
+        {
+            "name": "MENESES MENESES MARLENE ",
+            "id": 4
+        }
+    ],
+    "Informs": [
+        {
+            "name": "Departamento",
+            "id": 1
+        },
+        {
+            "name": "Municipio",
+            "id": 2
+        },
+        {
+            "name": "Institución",
+            "id": 4
+        },
+        {
+            "name": "Grupos",
+            "id": 5
+        },
+        {
+            "name": "Estudiantes",
+            "id": 6
+        }
+    ],
+    "Statistics": [
+        {
+            "name": "Departamento",
+            "id": 1
+        },
+        {
+            "name": "Municipio",
+            "id": 2
+        },
+        {
+            "name": "Institución",
+            "id": 4
+        },
+        {
+            "name": "Grupos",
+            "id": 5
+        },
+        {
+            "name": "Estudiantes",
+            "id": 6
+        }
+    ]
+}
