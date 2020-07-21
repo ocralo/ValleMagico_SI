@@ -21,7 +21,7 @@ window.addEventListener("load", function () {
               label: "Valle Mágico",
               action: {
                 type: "navigate",
-                to: 0
+                to: './game'
               }
             }
           ]

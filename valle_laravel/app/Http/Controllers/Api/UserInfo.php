@@ -23,6 +23,9 @@ class UserInfo extends Controller
                         ->where($toSearch, $username)
                         ->first();
         // $grade_obj = (object) array('id'=>$userInfo->grade_id, 'name'=>$userInfo->grade_name);
+	if (!$userInfo) {
+	    return "Not user in database.";
+	}
         $grade_id = $userInfo->grade_id;
         $user_id = $userInfo->id;
         $dissability = (object) array('id' => $userInfo->dissId, 'type' => $userInfo->dissName);
