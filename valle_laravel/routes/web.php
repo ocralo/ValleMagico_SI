@@ -39,7 +39,7 @@ if ($options['verify'] ?? false) {
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::get('si/{path?}', 'HomeController@index')->name('home');
 // Route::get('si/{path?}', 'HomeController@index')->name('home');
