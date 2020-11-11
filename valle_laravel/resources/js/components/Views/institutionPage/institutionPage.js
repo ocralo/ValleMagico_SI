@@ -74,6 +74,7 @@ const InstitutionPage = props => {
                 infoForSelectList={state.infoForSelectList}
                 isHovering={isHovering}
                 getNameItemClicked={getNameItemClicked}
+                type={3}
             />
             <Switch>
                 <Route exact path={`${url}`}>

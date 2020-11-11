@@ -69,6 +69,7 @@ const DeparmentPage = props => {
                 infoForSelectList={state.infoForSelectList}
                 isHovering={isHovering}
                 getNameItemClicked={getNameItemClicked}
+                type={1}
             />
             <Switch>
                 <Route exact path={`${url}`}>
@@ -76,6 +77,7 @@ const DeparmentPage = props => {
                 </Route>
                 <Route path={`${url}/:idForFetch`}>
                     <RoutesTabsDepartment
+                        tittle={state.tittleListSearch}
                         tabsPage={state.tabsPage}
                         showAllData={state.showAllData}
                         limitsForyLabels={props.limitsForyLabels}

@@ -47,7 +47,7 @@ function ViewResultMultipleIntelligences({
         } catch (error) {
             setisLoaded(true);
             setError(error);
-            console.log("TCL: fetchData -> error", error);
+            //console.log("TCL: fetchData -> error", error);
         }
     }
 
@@ -74,13 +74,13 @@ function ViewResultMultipleIntelligences({
                     widthGraph={768}
                     typeGraph="bar"
                 />
-                {
-                    titleChild !== null ? <CardHierarchy 
-                    title={titleChild}
-                    data={dataChild}
-                    url={url}
-                /> : null
-                }
+                {titleChild !== null ? (
+                    <CardHierarchy
+                        title={titleChild}
+                        data={dataChild}
+                        url={url}
+                    />
+                ) : null}
             </div>
         );
     }

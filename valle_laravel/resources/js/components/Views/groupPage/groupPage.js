@@ -59,7 +59,7 @@ const GroupPage = props => {
 
     useEffect(() => {
         setIsHovering(!props.isHovering);
-    }, [props.isHovering]);
+    }, [/* props.isHovering */]);
 
     const getNameItemClicked = (name) => {
         // setIdGroup(idHeadq);
@@ -79,6 +79,7 @@ const GroupPage = props => {
                 isHovering={isHovering}
                 getNameItemClicked={getNameItemClicked}
                 headquarters_hq={props.headquarters_hq}
+                type={5}
             />
             <Switch>
                 <Route exact path={`${url}`}>

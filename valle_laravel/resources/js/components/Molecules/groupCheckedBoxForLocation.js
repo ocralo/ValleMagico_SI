@@ -1,117 +1,118 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
-import { object } from 'yup'
-import InputSearch from '../Atoms/inputSearch'
-import ReactPaginate from 'react-paginate'
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import { object } from "yup";
+import InputSearch from "../Atoms/inputSearch";
+import ReactPaginate from "react-paginate";
 
-
-const GroupCheckedBoxLocation = ({ locationUsers, checkedBox, getIdChecked, isDisabled, isCancel, changeStateCancel, initialValues , slug_Permission}) => {
-
-
+const GroupCheckedBoxLocation = ({
+    locationUsers,
+    checkedBox,
+    getIdChecked,
+    isDisabled,
+    isCancel,
+    changeStateCancel,
+    initialValues,
+    slug_Permission
+}) => {
     // Var to selected option
-    const [infoForCheckBox, setinfoForCheckBox] = useState([])
-    const [infoChecked, setinfoChecked] = useState([])
+    const [infoForCheckBox, setinfoForCheckBox] = useState([]);
+    const [infoChecked, setinfoChecked] = useState([]);
     // ---------------------------
 
-
-    // Var to Filter funtion 
-    const [textForFilter, setTextForFilter] = useState("")
-    const [filter, setFilter] = useState([])
-    const [elements, setelements] = useState([])
+    // Var to Filter funtion
+    const [textForFilter, setTextForFilter] = useState("");
+    const [filter, setFilter] = useState([]);
+    const [elements, setelements] = useState([]);
 
     //  --------------------------
 
-
     // var to Paginate Funtion ------------------------
-    const [pageCount, setpageCount] = useState()
-    const [offset, setoffset] = useState(null)
-    const [perPage, setperPage] = useState(10)
-    const [currentPage, setcurrentPage] = useState(0)
-    const [hiddenPagination, sethiddenPagination] = useState(false)
+    const [pageCount, setpageCount] = useState();
+    const [offset, setoffset] = useState(null);
+    const [perPage, setperPage] = useState(10);
+    const [currentPage, setcurrentPage] = useState(0);
+    const [hiddenPagination, sethiddenPagination] = useState(false);
 
     // ------------------------------------
 
-
     useLayoutEffect(() => {
         if (isCancel) {
-            console.log("TCL: GroupChecked -> isCancel", isCancel)
-            addOptionChecked(locationUsers, initialValues)
-            changeStateCancel()
+            console.log("TCL: GroupChecked -> isCancel", isCancel);
+            addOptionChecked(locationUsers, initialValues);
+            changeStateCancel();
         }
-    }, [isCancel])
+    }, [isCancel]);
 
     useEffect(() => {
         if (locationUsers != undefined && checkedBox != undefined) {
-            addOptionChecked(locationUsers, checkedBox)
-            setpageCount(Math.ceil(locationUsers.length / perPage))
-            changeTextForFilter()
+            addOptionChecked(locationUsers, checkedBox);
+            setpageCount(Math.ceil(locationUsers.length / perPage));
+            changeTextForFilter();
         }
-    }, [locationUsers, checkedBox])
+    }, [locationUsers, checkedBox]);
 
     useEffect(() => {
-        changeTextForFilter()
-    }, [infoForCheckBox, textForFilter])
+        changeTextForFilter();
+    }, [infoForCheckBox, textForFilter]);
 
     useEffect(() => {
-        setElementsForCurrentPage()
-    }, [offset, perPage])
+        setElementsForCurrentPage();
+    }, [offset, perPage]);
 
     useEffect(() => {
         let selectedPage = 0;
         let offset = selectedPage * perPage;
-        setcurrentPage(selectedPage)
-        setoffset(offset)
+        setcurrentPage(selectedPage);
+        setoffset(offset);
         setElementsForCurrentPage();
-    }, [filter])
+    }, [filter]);
 
     function changeTextForFilter() {
         if (textForFilter !== "") {
             setFilter(
-                infoForCheckBox.filter(function (i) {
-                    if (i.name.toLowerCase().match(textForFilter.toLowerCase())) {
+                infoForCheckBox.filter(function(i) {
+                    if (
+                        i.name.toLowerCase().match(textForFilter.toLowerCase())
+                    ) {
                         return true;
                     }
                 })
-            )
+            );
         } else {
-            setFilter(infoForCheckBox)
+            setFilter(infoForCheckBox);
         }
     }
 
     function setElementsForCurrentPage() {
-
-        let prevElements = filter.slice(offset, offset + perPage)
+        let prevElements = filter.slice(offset, offset + perPage);
         // // console.log("TCL: setElementsForCurrentPage -> filter", filter)
         // console.log("TCL: setElementsForCurrentPage -> filter", filter)
         // // console.log("TCL: setElementsForCurrentPage -> offset", offset)
-        setelements(prevElements)
+        setelements(prevElements);
         if (filter.length < perPage) {
-            sethiddenPagination(false)
+            sethiddenPagination(false);
         } else {
-            sethiddenPagination(true)
+            sethiddenPagination(true);
         }
-
     }
 
     function addOptionChecked(allData, dataForCheck) {
-        let auxInfoGroupCheckbox = allData
+        let auxInfoGroupCheckbox = allData;
         // let auxInfoForCheckBox = []
-        let auxInfoChecked = []
-        setinfoForCheckBox(allData)
-        auxInfoGroupCheckbox.map(
-            item => {
-                let checkBoxExist = dataForCheck.find(itemCheck =>
-                    itemCheck == item.id);
+        let auxInfoChecked = [];
+        setinfoForCheckBox(allData);
+        auxInfoGroupCheckbox.map(item => {
+            let checkBoxExist = dataForCheck.find(
+                itemCheck => itemCheck == item.id
+            );
 
-                if (checkBoxExist !== undefined) {
-                    auxInfoChecked.push({
-                        id: `${item.id}`,
-                        name: item.name
-                    })
-                }
+            if (checkBoxExist !== undefined) {
+                auxInfoChecked.push({
+                    id: `${item.id}`,
+                    name: item.name
+                });
             }
-        )
-        setinfoChecked(auxInfoChecked)
-
+        });
+        setinfoChecked(auxInfoChecked);
     }
 
     // function handleChecked(e) {
@@ -130,20 +131,17 @@ const GroupCheckedBoxLocation = ({ locationUsers, checkedBox, getIdChecked, isDi
     // }
 
     function getIdPermisison(dataArray) {
-        let idPermisisons = []
-        dataArray.map(
-            item => {
-                if (item.checked) {
-                    idPermisisons.push(Number.parseInt(item.id.split('-')[0])
-                    )
-                }
+        let idPermisisons = [];
+        dataArray.map(item => {
+            if (item.checked) {
+                idPermisisons.push(Number.parseInt(item.id.split("-")[0]));
             }
-        )
-        getIdChecked(idPermisisons)
+        });
+        getIdChecked(idPermisisons);
     }
 
     function getPropsFromInputSearch(e) {
-        setTextForFilter(e)
+        setTextForFilter(e);
     }
 
     function handlePageClick(data) {
@@ -151,56 +149,50 @@ const GroupCheckedBoxLocation = ({ locationUsers, checkedBox, getIdChecked, isDi
         // // console.log("TCL: handlePageClick -> selectedPage", selectedPage)
         let offset = selectedPage * perPage;
         // // console.log("TCL: handlePageClick -> offset", offset)
-        setcurrentPage(selectedPage)
-        setoffset(offset)
+        setcurrentPage(selectedPage);
+        setoffset(offset);
         // setElementsForCurrentPage();
     }
 
     function handleClickOption(e) {
-        console.log("TCL: handleClickOption -> e", e.target.id)
-        let existId = checkedBox.find(
-            id => id == e.target.id
-        )
-        console.log("TCL: handleClickOption -> isId ", existId)
+        //console.log("TCL: handleClickOption -> e", e.target.id)
+        let existId = checkedBox.find(id => id == e.target.id);
+        //console.log("TCL: handleClickOption -> isId ", existId)
         if (!existId) {
-            getIdChecked(e.target.id, true)
+            getIdChecked(e.target.id, true);
         }
         // setinfoChecked(infoChecked => [...infoChecked, { name: e.target.value, id: e.target.id }])
     }
 
     function handleClickDeleteOption(e) {
-        console.log("TCL: handleClickDeleteOption -> e", e)
+        //console.log("TCL: handleClickDeleteOption -> e", e)
 
-        getIdChecked(e.target.id, false)
+        getIdChecked(e.target.id, false);
     }
 
     return (
         <div>
+            <div>Opciones selecionadas</div>
             <div>
-                Opciones selecionadas
+                {infoChecked.map((item, i) => (
+                    <button
+                        type="button"
+                        key={i}
+                        className="badge badge-info"
+                        id={item.id}
+                        disabled={isDisabled}
+                        onClick={handleClickDeleteOption}
+                    >
+                        {item.name} <i className="fas fa-times-circle" />
+                    </button>
+                ))}
             </div>
-            <div>
-                {
-                    infoChecked.map(
-                        (item, i) =>
-                            <button
-                                type="button"
-                                key={i}
-                                className="badge badge-info"
-                                id={item.id}
-                                disabled={isDisabled}
-                                onClick={handleClickDeleteOption}
-                            >
-                                {item.name} <i className="fas fa-times-circle"></i>
-                            </button>
-
-                    )
-                }
-            </div>
-            {
-                locationUsers !== undefined &&
-                <InputSearch placeHolder={"Ingrese su busqueda"} onChange={getPropsFromInputSearch} />
-            }
+            {locationUsers !== undefined && (
+                <InputSearch
+                    placeHolder={"Ingrese su busqueda"}
+                    onChange={getPropsFromInputSearch}
+                />
+            )}
             {/* {
                 elements.map(
                     (item, i) =>
@@ -217,22 +209,18 @@ const GroupCheckedBoxLocation = ({ locationUsers, checkedBox, getIdChecked, isDi
                         </div>
                 )
             } */}
-            {
-                elements.map(
-                    (item, i) =>
-                        <div key={i}>
-                            <input
-                                type="button"
-                                id={item.id}
-                                disabled={isDisabled}
-                                value={item.name}
-                                onClick={handleClickOption}
-                            />
-                        </div>
-                )
-            }
-            {
-                hiddenPagination &&
+            {elements.map((item, i) => (
+                <div key={i}>
+                    <input
+                        type="button"
+                        id={item.id}
+                        disabled={isDisabled}
+                        value={item.name}
+                        onClick={handleClickOption}
+                    />
+                </div>
+            ))}
+            {hiddenPagination && (
                 <ReactPaginate
                     previousLabel={" Anterior"}
                     nextLabel={"Siguiente "}
@@ -246,12 +234,9 @@ const GroupCheckedBoxLocation = ({ locationUsers, checkedBox, getIdChecked, isDi
                     disabledClassName={"disabled"}
                     activeClassName={"active"}
                 />
-            }
+            )}
         </div>
-    )
+    );
+};
 
-
-}
-
-export default GroupCheckedBoxLocation
-
+export default GroupCheckedBoxLocation;

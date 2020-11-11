@@ -12,7 +12,7 @@
             <div class="card card-register-body">
                 <div class="card-header text-center">
                     <h4>
-                        {{ __('¿Prolemas para iniciar sesión?') }}
+                        {{ __('¿Problemas para iniciar sesión?') }}
                     </h4>
                 </div>
 
@@ -53,7 +53,7 @@
                         Si presenta problema para recordar su contraseña e ingresar al sistema de información de ') }}
                     <strong>
                         {{ __('
-                        Valle magico) }}
+                        Valle magico') }}
                     </strong>
                     {{ __('
                         , por favor, enviar un email a, ') }}

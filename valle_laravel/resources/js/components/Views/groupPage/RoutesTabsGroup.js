@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
 
 import TabsContentSelectedList from "../../Organisms/tabsContentSelectedList/tabsContentSelectedList";
@@ -23,58 +23,89 @@ const RoutesTabsGroup = props => {
 
     const [dataChild, setDataChild] = useState([]);
 
+    const location = useLocation();
+
     useEffect(() => {
         setIdFetch(params.idForFetch.split("-", [2]));
     }, [params.idForFetch]);
 
     const routeFetchSubject = `${process.env.OPEN_VALLE_MAGICO_URL}grade`;
-    const routeFetchIntelligence = `${process.env.OPEN_VALLE_MAGICO_URL}intelligences/grade`;
+    const routeFetchIntelligence = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }intelligences/grade`;
     const routeFetchStyles = `${process.env.OPEN_VALLE_MAGICO_URL}styles/grade`;
 
-    const routeFetchIntelligenceCompetitions =
-        `${process.env.OPEN_VALLE_MAGICO_URL}competences/intelligences/grade`;
-    const routeFetchStyleCompetitions =
-        `${process.env.OPEN_VALLE_MAGICO_URL}competences/styles/grade`;
+    const routeFetchIntelligenceCompetitions = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }competences/intelligences/grade`;
+    const routeFetchStyleCompetitions = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }competences/styles/grade`;
 
-    const routeFetchVocational = `${process.env.OPEN_VALLE_MAGICO_URL}vocationals/grade`;
-    const routerFetchRecomentation =
-        `${process.env.OPEN_VALLE_MAGICO_URL}recomendations/grade`;
+    const routeFetchVocational = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }vocationals/grade`;
+    const routerFetchRecomentation = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }recomendations/grade`;
 
-    const routeFetchGamesPlayed = `${process.env.OPEN_VALLE_MAGICO_URL}gamesPlayed/grade`;
+    const routeFetchGamesPlayed = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }gamesPlayed/grade`;
 
-    const fetchHierarchy = `${process.env.OPEN_VALLE_MAGICO_URL}api/studentsByGroups`;
+    const fetchHierarchy = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }api/studentsByGroups`;
 
     const fetchTitleName = `${process.env.OPEN_VALLE_MAGICO_URL}api/group`;
 
-    const fetchTitleNameHeadq = `${process.env.OPEN_VALLE_MAGICO_URL}api/headquarter`;
+    const fetchTitleNameHeadq = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }api/headquarter`;
+
+    const routeFetchDataExcel = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }api/dataByHeadquarterGroup`;
+
+    const fetchDataFrom = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }api/studentDataComeFrom`;
 
     const [name, setName] = useState();
 
-
     useEffect(() => {
-        (async function () {
+        (async function() {
             // const open_location = process.env.OPEN_LOCATION_URL;
-            let ids = window.location.pathname.split('/');
-            let ids2 = ids[3].split('-')
-            let idHeadq = parseInt(ids2[0])
-            let idGroup = parseInt(ids2[1])
-            const id = await fetchApi(fetchHierarchy + `/${idHeadq},${idGroup}`);
+            let ids = location.pathname.split("/");
+            let ids2 = ids[3].split("-");
+            let idHeadq = parseInt(ids2[0]);
+            let idGroup = parseInt(ids2[1]);
+            //console.log(`${fetchHierarchy}/${idHeadq}/${idGroup}`);
+            const id = await fetchApi(
+                `${fetchHierarchy}/${idHeadq}/${idGroup}`
+            );
+            //console.log(id);
             let names = [];
             id.map(data => {
                 names.push({
-                    name: `${data.first_name} ${data.second_name} ${data.first_surname} ${data.second_surname}`,
+                    /* name: `${data.first_name} ${data.second_name} ${
+                        data.first_surname
+                    } ${data.second_surname}`, */
+                    name: data.full_name,
                     id: data.id
-                })
-            })
-            if(props.nameItemClicked === ""){
+                });
+            });
+            if (props.nameItemClicked === "") {
                 const json = await fetchApi(fetchTitleName + `/${idGroup}`);
-                const json2 = await fetchApi(fetchTitleNameHeadq + `/${idHeadq}`);
-                console.log('name', json[0].name, json2[0].name)
-                setName(json2[0].name + '-' +  json[0].name)
+                const json2 = await fetchApi(
+                    fetchTitleNameHeadq + `/${idHeadq}`
+                );
+                setName(json2.name + " - " + json[0].name);
             }
+
             setDataChild(names);
         })();
-    }, [props.nameItemClicked])
+    }, [props.nameItemClicked]);
 
     return (
         <div className="col-12 m-0">
@@ -83,28 +114,38 @@ const RoutesTabsGroup = props => {
             <Switch>
                 <Route path={`${url}/resultadosporasignatura`}>
                     <ViewResultSubjetc
+                        fetchDataFrom={fetchDataFrom}
                         urltoGetInfoSubjects={`${routeFetchSubject}/${
                             idFetch[0]
-                            }/${idFetch[1]}`}
+                        }/${idFetch[1]}`}
                         urlToGetInfoGamesPlayed={`${routeFetchGamesPlayed}/${
                             idFetch[0]
-                            }/${idFetch[1]}`}
+                        }/${idFetch[1]}`}
                         limitsForyLabels={props.limitsForyLabels}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                         titleChild={"Estudiantes"}
                         dataChild={dataChild}
                         url={"/si/Estudiantes/"}
+                        idFetch={idFetch}
                     />
                 </Route>
                 <Route path={`${url}/inteligenciasmultiples`}>
                     <ViewResultMultipleIntelligences
                         urlToGetInfoIntelligences={`${routeFetchIntelligence}/${
                             idFetch[0]
-                            }/${idFetch[1]}`}
+                        }/${idFetch[1]}`}
                         urlToGetInfoGamesPlayed={`${routeFetchGamesPlayed}/${
                             idFetch[0]
-                            }/${idFetch[1]}/inteligencias`}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        }/${idFetch[1]}/inteligencias`}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                         titleChild={"Estudiantes"}
                         dataChild={dataChild}
                         url={"/si/Estudiantes/"}
@@ -114,8 +155,12 @@ const RoutesTabsGroup = props => {
                     <ViewLearningStyles
                         urlToGetInfoStyles={`${routeFetchStyles}/${
                             idFetch[0]
-                            }/${idFetch[1]}`}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        }/${idFetch[1]}`}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                         titleChild={"Estudiantes"}
                         dataChild={dataChild}
                         url={"/si/Estudiantes/"}
@@ -125,11 +170,15 @@ const RoutesTabsGroup = props => {
                     <ViewResultCompetition
                         urlToFetchCompetitionIntelligences={`${routeFetchIntelligenceCompetitions}/${
                             idFetch[0]
-                            }/${idFetch[1]}`}
+                        }/${idFetch[1]}`}
                         urlTOFetchCompetitionStyles={`${routeFetchStyleCompetitions}/${
                             idFetch[0]
-                            }/${idFetch[1]}`}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        }/${idFetch[1]}`}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                         titleChild={"Estudiantes"}
                         dataChild={dataChild}
                         url={"/si/Estudiantes/"}
@@ -139,11 +188,15 @@ const RoutesTabsGroup = props => {
                     <ViewRecomendations
                         urlToFetchInfoRecomendationSubject={`${routerFetchRecomentation}/${
                             idFetch[0]
-                            }/${idFetch[1]}`}
+                        }/${idFetch[1]}`}
                         urlToFetchInfoRecomendationIntelligence={`${routeFetchIntelligence}/${
                             idFetch[0]
-                            }/${idFetch[1]}`}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        }/${idFetch[1]}`}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                     />
                 </Route>
                 <Redirect
@@ -152,6 +205,7 @@ const RoutesTabsGroup = props => {
                 />
             </Switch>
             <ButtonGenerateInform
+                routeFetchDataExcel={routeFetchDataExcel}
                 idForFetch={`${idFetch[0]}/${idFetch[1]}`}
                 routeFetchCompetitions={routeFetchSubject}
                 routeFetchIntelligence={routeFetchIntelligence}

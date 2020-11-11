@@ -75,6 +75,7 @@ const StudentPage = props => {
                 isHovering={props.isHovering}
                 getNameItemClicked={getNameItemClicked}
                 headquarters={props.headquarters}
+                type={6}
             />
             <Switch>
                 <Route exact path={`${url}`}>

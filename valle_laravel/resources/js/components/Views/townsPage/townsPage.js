@@ -71,6 +71,7 @@ const TownsPage = (props) => {
                 infoForSelectList={state.infoForSelectList}
                 isHovering={isHovering}
                 getNameItemClicked={getNameItemClicked}
+                type={2}
             />
             <Switch>
                 <Route exact path={`${url}`}>

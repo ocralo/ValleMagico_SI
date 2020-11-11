@@ -53,6 +53,8 @@ const RouterTabsStudent = props => {
 
     const fetchTitleName = `${process.env.OPEN_VALLE_MAGICO_URL}api/student`;
 
+    const routeFetchDataExcel = `${process.env.OPEN_VALLE_MAGICO_URL}api/dataByStudent`;
+
     const [name, setName] = useState();
 
     useEffect(() => {
@@ -60,12 +62,12 @@ const RouterTabsStudent = props => {
             // const open_location = process.env.OPEN_LOCATION_URL;
             let ids = window.location.pathname.split('/');
             let ids2 = ids[3].split('-')
-            let idSt = parseInt(ids2[0])
-           
+            //let idSt = parseInt(ids2[0])
+            let idSt = parseInt(ids[4])
+
             if(props.nameItemClicked === ""){
                 const json = await fetchApi(fetchTitleName + `/${idSt}`);
-                // console.log('name', json[0].name)
-                setName(json[0].first_name + json[0].second_name + json[0].first_surname + json[0].second_surname)
+                setName(json[0].first_name + " " + json[0].second_name + " " + json[0].first_surname + " " + json[0].second_surname)
             }
         })();
     }, [props.nameItemClicked])
@@ -142,6 +144,7 @@ const RouterTabsStudent = props => {
                 />
             </Switch>
             <ButtonGenerateInform
+                routeFetchDataExcel={routeFetchDataExcel}
                 idForFetch={params.idForFetch}
                 routeFetchCompetitions={routerFetchSubject}
                 routeFetchIntelligence={routeFetchIntelligence}

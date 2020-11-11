@@ -71,6 +71,7 @@ const HeadquaterPage = props => {
                 infoForSelectList={state.infoForSelectList}
                 isHovering={isHovering}
                 getNameItemClicked={getNameItemClicked}
+                type={4}
             />
             <Switch>
                 <Route exact path={`${url}`}>

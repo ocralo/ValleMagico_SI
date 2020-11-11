@@ -3,22 +3,25 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css'; */
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Menu desplegable
-@import 'menu';
+@import "menu";
 
 // background de las paginas
-@import 'background';
+@import "background";
 
 // textos
-@import 'text';
+@import "text";
 
 // botones
-@import 'buttons';
+@import "buttons";
 
 // modal
-@import 'modals';
+@import "modals";
+
+// graficas
+@import "graphs";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

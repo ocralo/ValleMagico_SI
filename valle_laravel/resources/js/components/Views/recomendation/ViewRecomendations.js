@@ -25,9 +25,9 @@ function ViewRecomendations({
     function fetchData() {
         setisLoaded(true);
         try {
-            console.log("Hola voy a ejecutar fetch Subject");
+            //console.log("Hola voy a ejecutar fetch Subject");
             FetchSubject();
-            console.log("Hola voy a ejecutar fetch Intelilligences");
+            //console.log("Hola voy a ejecutar fetch Intelilligences");
             FetchIntelligences();
         } catch (error) {
             setisLoaded(true);
@@ -37,7 +37,7 @@ function ViewRecomendations({
 
     async function FetchSubject() {
         let subject = await fetchApi(urlToFetchInfoRecomendationSubject);
-
+        //console.log(urlToFetchInfoRecomendationSubject);
         if (
             (subject.length > 0 && Array.isArray(subject)) ||
             (!Array.isArray(subject) && subject.message == undefined)

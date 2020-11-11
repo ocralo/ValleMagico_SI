@@ -19,7 +19,7 @@
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 // Route::post('login', 'Auth\LoginController@login');
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
 if ($options['register'] ?? true) {
@@ -34,12 +34,12 @@ if ($options['reset'] ?? true) {
 
 // Email Verification Routes...
 if ($options['verify'] ?? false) {
-    Route::emailVerification(); 
+    Route::emailVerification();
 }
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
 // Route::get('si/{path?}', 'HomeController@index')->name('home');
 // Route::get('si/{path?}', 'HomeController@index')->name('home');
@@ -52,17 +52,17 @@ Route::get('si/{path?}', function () {
 })->where('path', '.*');
 
 
-// Route::get('/test/{id}', function ($id) {
+// Route::get('/Stats/{id}', function ($id) {
 //     return json_decode(file_get_contents('http://localhost:8000/api/department/'.$id), true);;
 // });
 
-Route::middleware(['auth'])->group(function () {    
+Route::middleware(['auth'])->group(function () {
 
 // Permissions
 Route::get('/permissions/all', 'ViewController@getPermissionsAll');
 Route::get('/permissions/{User}', 'ViewController@getPermissions');
 
-// Users 
+// Users
 Route::get('/users/all', 'UserController@getUsersAll');
 Route::post('/createUser', 'UserController@createUser');
 Route::get('/getUser/{id}', 'UserController@getUser');
@@ -83,8 +83,16 @@ Route::get('/try-redis', 'RedisController@index');
 Route::get('/infoUser/{id}', 'Api\UserInfo@getByRole');
 Route::post('/infoUser/students', 'Api\UserInfo@getStudentsByRole');
 Route::post('/infoUser/grades', 'Api\UserInfo@getGradesByRole');
+Route::post('/infoUser/deparments', 'Api\UserInfo@getDeparmentsByRole');
+Route::post('/infoUser/towns', 'Api\UserInfo@getTownsByRole');
+Route::post('/infoUser/institutions', 'Api\UserInfo@getInstitutionsByRole');
+Route::post('/infoUser/headquarters', 'Api\UserInfo@getHeadquartersByRole');
 
-// Intelligences by competence
+Route::get('/infoUser/students/characters', 'Api\UserInfo@getStudentCharactersByRole');
+Route::get('/infoUser/grades/characters', 'Api\UserInfo@getGradeCharactersByRole');
+
+
+// Intelligences by competencef
 Route::get('/competences/intelligences/headquarter/{id}', 'Api\GetByHeadquarter@getIntelligencesByCompetence');
 Route::get('/competences/styles/headquarter/{id}', 'Api\GetByHeadquarter@getStylesByCompetence');
 Route::get('/competences/intelligences/grade/{headquarter}/{id}', 'Api\GetByGrade@getIntelligencesByCompetence');
@@ -119,7 +127,7 @@ Route::post('/simat/{dataType}', 'Api\Simat@save');
 Route::get('/{locationType}/{id}', 'Api\GetByLocationType@get');
 Route::get('/playersPlayed', 'Api\GetPlayersPlayed@get');
 
-// Get by subject and show minigames 
+// Get by subject and show minigames
 Route::get('/bySubject/grade/{headquarter}/{id}/{subject}', 'Api\GetByGrade@getBySubject');
 Route::get('/bySubject/student/{id}/{subject}', 'Api\GetByStudent@getBySubject');
 Route::get('/bySubject/headquarter/{id}/{subject}', 'Api\GetByHeadquarter@getBySubject');
@@ -156,3 +164,22 @@ Route::get('/recomendations/{locationType}/{id}', 'Api\GetByLocationType@getReco
 
 // Get performances
 Route::get('/performances', 'Api\GetPerformances@get');
+
+//update
+Route::get('/statsArea/{type}/{id}','StatsController@getByKnowledgeAreasByLocation');
+Route::get('/statsArea/{type}/{id}/{grade}','StatsController@getByKnowledgeAreasByLocation');
+
+Route::get('/statsIntelligences/{type}/{id}','StatsController@getByIntelligencesByLocation');
+Route::get('/statsIntelligences/{type}/{id}/{grade}','StatsController@getByIntelligencesByLocation');
+
+Route::get('/statsStyles/{type}/{id}','StatsController@getByStylesByLocation');
+Route::get('/statsStyles/{type}/{id}/{grade}','StatsController@getByStylesByLocation');
+
+Route::get('/statsCompetences/{type}/{id}','StatsController@getByCompetencesByLocation');
+Route::get('/statsCompetences/{type}/{id}/{grade}','StatsController@getByCompetencesByLocation');
+
+Route::get('/statsAreasRecomendations/{type}/{id}','StatsController@getKnowledgeAreasRecomendationsByLocation');
+Route::get('/statsAreasRecomendations/{type}/{id}/{grade}','StatsController@getKnowledgeAreasRecomendationsByLocation');
+
+Route::get('/statsIntelligencesRecomendations/{type}/{id}','StatsController@getIntelligencesRecomendationsByLocation');
+Route::get('/statsIntelligencesRecomendations/{type}/{id}/{grade}','StatsController@getIntelligencesRecomendationsByLocation');

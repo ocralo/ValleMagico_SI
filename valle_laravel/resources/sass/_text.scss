@@ -1,7 +1,6 @@
-
 @font-face {
-    font-family: 'Bosque-Regular';
-    src: url('../fonts/Bosque-regular/Bosque-regular.ttf') format('truetype');
+    font-family: "Bosque-Regular";
+    src: url("../fonts/Bosque-regular/Bosque-regular.ttf") format("truetype");
 }
 
 .tittle-listSearch {
@@ -10,7 +9,6 @@
     font-size: 1.8em;
     color: #000000;
     padding: 0 1.5rem;
-
 }
 
 .tittle-listSearch {
@@ -67,14 +65,18 @@
 }
 
 .nav-link div div {
-    margin: auto 0 ;
+    margin: auto 0;
     color: #726b62 !important;
 }
 
-.tittle-selected-view{
+.tittle-selected-view {
     font-family: "Bosque-Regular" !important;
 }
 
 .title-introPage {
     font-family: "Bosque-Regular" !important;
+}
+
+.text-primary-color {
+    color: $dark-color;
 }

@@ -67,7 +67,7 @@ function ViewResultCompetition({
     useEffect(() => {
         fetchData();
     }, [urlToFetchCompetitionIntelligences, urlTOFetchCompetitionStyles]);
-
+t
     if (isLoaded) {
         return <LoadingPage />;
     } else {
@@ -99,7 +99,7 @@ function ViewResultCompetition({
                     dataForGraph2={styleForCompentition[2]}
                 />
                 {
-                    titleChild !== null ? <CardHierarchy 
+                    titleChild !== null ? <CardHierarchy
                     title={titleChild}
                     data={dataChild}
                     url={url}

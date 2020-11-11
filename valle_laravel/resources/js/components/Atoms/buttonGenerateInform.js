@@ -11,6 +11,8 @@ import Graphline from "../Organisms/graphline/graphline";
 import ReactToPrint from "react-to-print";
 
 const ButtonGenerateInform = ({
+    tittle,
+    routeFetchDataExcel,
     idForFetch,
     routeFetchCompetitions,
     routeFetchIntelligence,
@@ -54,6 +56,10 @@ const ButtonGenerateInform = ({
     });
 
     const containerRef = createRef();
+
+    function getDataForExcel() {
+        window.open(`${routeFetchDataExcel}/${idForFetch}`);
+    }
 
     useEffect(() => {
         setisDataIntelligences(false);
@@ -263,43 +269,42 @@ const ButtonGenerateInform = ({
                                                 className="icon-icon-imprimir"
                                                 alt="imprimir"
                                             />
+                                            <span className="text-white">
+                                                Imprimir
+                                            </span>
                                         </button>
                                     )}
                                     content={() => containerRef.current}
                                 />
                             )}
-                            <h5
-                                className="modal-title w-100 text-center"
-                                id="exampleModalLongTitle"
-                            >
-                                Generar Informe
-                            </h5>
                             <button
                                 type="button"
-                                className="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
+                                className="btn btn-generate-inform"
+                                onClick={getDataForExcel}
                             >
-                                <span aria-hidden="true">&times;</span>
+                                <img
+                                    src={
+                                        __webpack_public_path__ +
+                                        "img/icon-print.svg"
+                                    }
+                                    className="icon-icon-imprimir"
+                                    alt="imprimir"
+                                />
+                                <span className="text-white">Excel</span>
                             </button>
-                        </div>
-                        <div className="modal-body">
-                            <PdfGenerateInform
-                                ref={containerRef}
-                                jsonApiCompetitions={jsonApiCompetitions}
-                                jsonApiIntelligence={jsonApiIntelligence}
-                                jsonApiStyles={jsonApiStyles}
-                                isLoaded={isLoaded}
-                                name={nameItemClicked}
-                                intelligenceForCompentition={
-                                    intelligenceForCompentition
-                                }
-                                styleForCompentition={styleForCompentition}
-                                limitsForyLabels={limitsForyLabels}
-                                isDataIntelligences={isDataIntelligences}
-                                isDataStyles={isDataStyles}
-                                jsonApiSubject={jsonApiSubject}
-                                jsonApiVocation={jsonApiVocation}
+                            jsonApiCompetitions={jsonApiCompetitions}
+                            jsonApiIntelligence={jsonApiIntelligence}
+                            jsonApiStyles={jsonApiStyles}
+                            isLoaded={isLoaded}
+                            name={nameItemClicked}
+                            intelligenceForCompentition=
+                            {intelligenceForCompentition}
+                            styleForCompentition={styleForCompentition}
+                            limitsForyLabels={limitsForyLabels}
+                            isDataIntelligences={isDataIntelligences}
+                            isDataStyles={isDataStyles}
+                            jsonApiSubject={jsonApiSubject}
+                            jsonApiVocation={jsonApiVocation}
                             />
                         </div>
                     </div>

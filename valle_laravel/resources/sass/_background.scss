@@ -18,13 +18,23 @@
     padding: 1em 0;
     padding-bottom: 0px;
     overflow: auto;
-    @media (max-width: 768px) {
+    height: 100% !important;
+}
 
-        position: relative !important;
+.hiddenListSelect {
+    width: 100% !important;
+    @media (max-width: 990px) {
+        height: 0 !important;
     }
 }
 
-.img-fluid{
+.showListSelect {
+    @media (max-width: 990px) {
+        height: 100% !important;
+    }
+}
+
+.img-fluid {
     width: 20em;
     height: auto;
 }
@@ -32,15 +42,15 @@
 /* Modal */
 .modal-content {
     height: 80%;
-  }
+}
 
-  /* icono imprimir */
+/* icono imprimir */
 
-  .icon-imprimir{
+.icon-imprimir {
     width: 1.3em;
-  }
+}
 
 /* Acordeon */
-.card-faq{
+.card-faq {
     margin: 0.5em 0em 0em 0.5em;
 }

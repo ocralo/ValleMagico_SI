@@ -3,7 +3,12 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import "./navBar.css";
 
-const NavBarM = ({ user, permissions, setIsHoveringDeparment }) => {
+const NavBarM = ({
+    user,
+    permissions,
+    setIsHoveringDeparment,
+    isHoveringProp
+}) => {
     const [isHovering, setIsHovering] = useState(false);
     const [flagList, setFlagList] = useState(true);
     const [width, height] = useWindowSize();
@@ -21,6 +26,10 @@ const NavBarM = ({ user, permissions, setIsHoveringDeparment }) => {
         }, []);
         return size;
     }
+
+    useEffect(() => {
+        setIsHovering(isHoveringProp);
+    }, [isHoveringProp]);
 
     function getPermissionToPropPermission(namePermission) {
         // Find Permission
@@ -61,6 +70,7 @@ const NavBarM = ({ user, permissions, setIsHoveringDeparment }) => {
 
     function showList(e) {
         setFlagList(!flagList);
+        setIsHoveringDeparment(!flagList);
     }
 
     return (
@@ -92,7 +102,7 @@ const NavBarM = ({ user, permissions, setIsHoveringDeparment }) => {
                                 type="button"
                                 onClick={e => showList(e)}
                             >
-                                {flagList ? "Ver lista" : "Ocultar lista"}
+                                {!isHovering ? "Ver lista" : "Ocultar lista"}
                             </button>
                         )}
                     <div

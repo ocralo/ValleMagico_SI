@@ -1,1 +1,1 @@
-/git/ValleMagico_SI/version.txt
+0,0,1

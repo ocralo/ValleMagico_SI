@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Route, Switch, Redirect } from "react-router-dom";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, useLocation } from "react-router-dom";
 
 import TabsContentSelectedList from "../../Organisms/tabsContentSelectedList/tabsContentSelectedList";
 
@@ -21,43 +21,64 @@ const RoutesTabsTown = props => {
     const { params, url } = useRouteMatch();
     const [dataChild, setDataChild] = useState([]);
 
-
     const routeFetchSubject = `${process.env.OPEN_VALLE_MAGICO_URL}town`;
-    const routeFetchIntelligence = `${process.env.OPEN_VALLE_MAGICO_URL}intelligences/town`;
+    const routeFetchIntelligence = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }intelligences/town`;
     const routeFetchStyles = `${process.env.OPEN_VALLE_MAGICO_URL}styles/town`;
 
-    const routeFetchIntelligenceCompetitions =
-        `${process.env.OPEN_VALLE_MAGICO_URL}competences/intelligences/town`;
-    const routeFetchStyleCompetitions =
-        `${process.env.OPEN_VALLE_MAGICO_URL}competences/styles/town`;
+    const routeFetchIntelligenceCompetitions = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }competences/intelligences/town`;
+    const routeFetchStyleCompetitions = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }competences/styles/town`;
 
-    const routeFetchVocational = `${process.env.OPEN_VALLE_MAGICO_URL}vocationals/town`;
-    const routeRecomendation = `${process.env.OPEN_VALLE_MAGICO_URL}recomendations/town`;
+    const routeFetchVocational = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }vocationals/town`;
+    const routeRecomendation = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }recomendations/town`;
 
-    const routeFetchGamesPlayed = `${process.env.OPEN_VALLE_MAGICO_URL}gamesPlayed/town`;
+    const routeFetchGamesPlayed = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }gamesPlayed/town`;
 
-    const fetchHierarchy = `${process.env.OPEN_VALLE_MAGICO_URL}api/institutionsByTown`;
+    const fetchHierarchy = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }api/institutionsByTown`;
 
     const fetchTitleName = `${process.env.OPEN_VALLE_MAGICO_URL}api/town`;
-    
+
+    const routeFetchDataExcel = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }api/dataByTown`;
+
     const [name, setName] = useState();
 
+    const fetchDataFrom = `${
+        process.env.OPEN_VALLE_MAGICO_URL
+    }api/institutionDataComeFrom`;
+
+    const location = useLocation();
 
     useEffect(() => {
-        (async function () {
+        (async function() {
             const open_location = process.env.OPEN_LOCATION_URL;
-            let ids = window.location.pathname.split('/');
-            let ids2 = ids[3].split('-')
-            let idTown = parseInt(ids2[0])
+            let ids = location.pathname.split("/");
+            let ids2 = ids[3].split("-");
+            let idTown = parseInt(ids2[0]);
             const id = await fetchApi(fetchHierarchy + `/${idTown}`);
-            if(props.nameItemClicked === ""){
+            //console.log("ID",id);
+            if (props.nameItemClicked === "") {
                 const json = await fetchApi(fetchTitleName + `/${idTown}`);
                 // console.log('name', name[0].name)
-                setName(json[0].name)
+                setName(json.name);
             }
             setDataChild(id);
         })();
-    }, [props.nameItemClicked])
+    }, [props.nameItemClicked]);
 
     return (
         <div className="col-12 m-0">
@@ -68,20 +89,38 @@ const RoutesTabsTown = props => {
             <Switch>
                 <Route path={`${url}/resultadosporasignatura`}>
                     <ViewResultSubjetc
-                        urltoGetInfoSubjects={`${routeFetchSubject}/${params.idForFetch}`}
-                        urlToGetInfoGamesPlayed={`${routeFetchGamesPlayed}/${params.idForFetch}`}
+                        urltoGetInfoSubjects={`${routeFetchSubject}/${
+                            params.idForFetch
+                        }`}
+                        urlToGetInfoGamesPlayed={`${routeFetchGamesPlayed}/${
+                            params.idForFetch
+                        }`}
+                        fetchDataFrom={fetchDataFrom}
                         limitsForyLabels={props.limitsForyLabels}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                         titleChild={"Instituciones"}
                         dataChild={dataChild}
                         url={"/si/Instituciones/"}
+                        idFetch={[]}
                     />
                 </Route>
                 <Route path={`${url}/inteligenciasmultiples`}>
                     <ViewResultMultipleIntelligences
-                        urlToGetInfoIntelligences={`${routeFetchIntelligence}/${params.idForFetch}`}
-                        urlToGetInfoGamesPlayed={`${routeFetchGamesPlayed}/${params.idForFetch}/inteligencias`}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        urlToGetInfoIntelligences={`${routeFetchIntelligence}/${
+                            params.idForFetch
+                        }`}
+                        urlToGetInfoGamesPlayed={`${routeFetchGamesPlayed}/${
+                            params.idForFetch
+                        }/inteligencias`}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                         titleChild={"Instituciones"}
                         dataChild={dataChild}
                         url={"/si/Instituciones/"}
@@ -89,8 +128,14 @@ const RoutesTabsTown = props => {
                 </Route>
                 <Route path={`${url}/estilosdeaprendizaje`}>
                     <ViewLearningStyles
-                        urlToGetInfoStyles={`${routeFetchStyles}/${params.idForFetch}`}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        urlToGetInfoStyles={`${routeFetchStyles}/${
+                            params.idForFetch
+                        }`}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                         titleChild={"Instituciones"}
                         dataChild={dataChild}
                         url={"/si/Instituciones/"}
@@ -98,9 +143,17 @@ const RoutesTabsTown = props => {
                 </Route>
                 <Route path={`${url}/resultadosporcompetencia`}>
                     <ViewResultCompetition
-                        urlToFetchCompetitionIntelligences={`${routeFetchIntelligenceCompetitions}/${params.idForFetch}`}
-                        urlTOFetchCompetitionStyles={`${routeFetchStyleCompetitions}/${params.idForFetch}`}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        urlToFetchCompetitionIntelligences={`${routeFetchIntelligenceCompetitions}/${
+                            params.idForFetch
+                        }`}
+                        urlTOFetchCompetitionStyles={`${routeFetchStyleCompetitions}/${
+                            params.idForFetch
+                        }`}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                         titleChild={"Instituciones"}
                         dataChild={dataChild}
                         url={"/si/Instituciones/"}
@@ -108,9 +161,17 @@ const RoutesTabsTown = props => {
                 </Route>
                 <Route path={`${url}/recomendaciones`}>
                     <ViewRecomendations
-                        urlToFetchInfoRecomendationSubject={`${routeRecomendation}/${params.idForFetch}`}
-                        urlToFetchInfoRecomendationIntelligence={`${routeFetchIntelligence}/${params.idForFetch}`}
-                        nameItemClicked={props.nameItemClicked === "" ? name : props.nameItemClicked}
+                        urlToFetchInfoRecomendationSubject={`${routeRecomendation}/${
+                            params.idForFetch
+                        }`}
+                        urlToFetchInfoRecomendationIntelligence={`${routeFetchIntelligence}/${
+                            params.idForFetch
+                        }`}
+                        nameItemClicked={
+                            props.nameItemClicked === ""
+                                ? name
+                                : props.nameItemClicked
+                        }
                     />
                 </Route>
                 <Redirect
@@ -120,6 +181,7 @@ const RoutesTabsTown = props => {
             </Switch>
 
             <ButtonGenerateInform
+                routeFetchDataExcel={routeFetchDataExcel}
                 idForFetch={params.idForFetch}
                 routeFetchCompetitions={routeFetchSubject}
                 routeFetchIntelligence={routeFetchIntelligence}

@@ -38,8 +38,8 @@ class HelpPage extends React.Component {
                                 <div className="card-body text-justify mx-3">
                                     Si presenta problema para recordar su
                                     contraseña e ingresar al sistema de
-                                    información de Valle magico, por favor,
-                                    enviar un correo a vallemagico@gmail.com
+                                    información de Valle Mágico, por favor,
+                                    enviar un correo a vallemagico.soporte@gmail.com
                                     con el asunto "Olvidé mi contraseña", con la
                                     siguiente información: Nombre completo,
                                     Nombre de usuario y Última contraseña que

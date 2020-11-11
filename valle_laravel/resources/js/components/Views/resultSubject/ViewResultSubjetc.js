@@ -8,6 +8,8 @@ import LoadingPage from "../loadingPage/loadingPage";
 import { fetchApi } from "../../../function/GlobalFunctions";
 
 function ViewResultSubjetc({
+    idFetch,
+    fetchDataFrom,
     urltoGetInfoSubjects,
     urlToGetInfoGamesPlayed,
     urlToGetSubjectByGrade = undefined,
@@ -24,7 +26,7 @@ function ViewResultSubjetc({
 
     const [dataGamesPlayed, setdataGamesPlayed] = useState();
     const [jsonApi, setJsonApi] = useState([]);
-    const [subjectResultByGrade, setsubjectResultByGrade] = useState([])
+    const [subjectResultByGrade, setsubjectResultByGrade] = useState([]);
 
     const tabs = [
         { id: "General" },
@@ -54,9 +56,7 @@ function ViewResultSubjetc({
                 const getSubjectResultByGrade = await fetchApi(
                     urlToGetSubjectByGrade
                 );
-                const getEvaluateData = await fetchApi(
-                    urlToGetEvaluateData
-                );
+                const getEvaluateData = await fetchApi(urlToGetEvaluateData);
                 isDataSubject(getSubjectResultByGrade, getEvaluateData);
             }
 
@@ -68,9 +68,9 @@ function ViewResultSubjetc({
     }
 
     function isDataSubject(result, evaluateData) {
-        console.log("TCL: isDataSubject -> result", result.message);
+        //console.log("TCL: isDataSubject -> result", result.message);
         if (result.message == undefined) {
-            console.log("TCL: isDataSubject -> result", result);
+            //console.log("TCL: isDataSubject -> result", result);
             Object.keys(result).map(i => {
                 let grade = {
                     name: `Grado ${i}`,
@@ -108,9 +108,13 @@ function ViewResultSubjetc({
     }
 
     useEffect(() => {
-        console.log("urltoGetInfoSubjects", urltoGetInfoSubjects);
+        //console.log("fetchDataFrom", fetchDataFrom);
+    }, []);
+
+    useEffect(() => {
+        //console.log("urltoGetInfoSubjects", urltoGetInfoSubjects);
         // if (urltoGetInfoSubjects !== undefined) {
-            fetchData();
+        fetchData();
         // }
     }, [urltoGetInfoSubjects, urlToGetInfoGamesPlayed]);
 
@@ -128,6 +132,9 @@ function ViewResultSubjetc({
                     averageTotalGames={dataGamesPlayed.total_games}
                     titleAverage="Promedio de juegos jugados"
                     averageGamesPlayed={dataGamesPlayed.average}
+                    titleChildren="adasdasd"
+                    averageCildren={{ data: 0, total: 45 }}
+                    // 25 d 50
                 />
                 <CardGraph
                     tabs={tabs}
@@ -135,39 +142,36 @@ function ViewResultSubjetc({
                     showAllData={showAllData}
                     limitsForyLabels={limitsForyLabels}
                 />
-                {
-                    titleChild !== null ? <CardHierarchy 
-                    title={titleChild}
-                    data={dataChild}
-                    url={url}
-                /> : null
-                }
-                {
-                    subjectResultByGrade.length > 0 &&
-                    subjectResultByGrade.map(
-                        (item, i) =>
-                            <div key={i} >
+                {titleChild !== null ? (
+                    <CardHierarchy
+                        idFetch={idFetch}
+                        title={titleChild}
+                        data={dataChild}
+                        url={url}
+                        fetchDataFrom={fetchDataFrom}
+                    />
+                ) : null}
+                {subjectResultByGrade.length > 0 &&
+                    subjectResultByGrade.map((item, i) => (
+                        <div key={i}>
+                            <CardGraph
+                                titleCard={item.name}
+                                jsonApi={item.subjects}
+                                showAllData={showAllData}
+                                // typeGraph={'line'}
+                                limitsForyLabels={limitsForyLabels}
+                            />
+                            {item.evaluate.length > 0 && (
                                 <CardGraph
-                                    titleCard={item.name}
-                                    jsonApi={item.subjects}
+                                    titleCard={`${item.name} evaluación`}
+                                    jsonApi={item.evaluate}
                                     showAllData={showAllData}
                                     // typeGraph={'line'}
                                     limitsForyLabels={limitsForyLabels}
                                 />
-                                {
-                                    item.evaluate.length > 0 &&
-                                    <CardGraph
-                                        titleCard={`${item.name} evaluación`}
-                                        jsonApi={item.evaluate}
-                                        showAllData={showAllData}
-                                        // typeGraph={'line'}
-                                        limitsForyLabels={limitsForyLabels}
-                                    />
-
-                                }
-                            </div>
-                    )
-                }
+                            )}
+                        </div>
+                    ))}
             </div>
         );
     }
