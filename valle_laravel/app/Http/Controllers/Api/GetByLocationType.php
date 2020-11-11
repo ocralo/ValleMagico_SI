@@ -14,7 +14,7 @@ class GetByLocationType extends Controller
     /**
      * Receives a location type that can be department, town or institution and the id of the location to
      * return the average of score for every subject segmented by the location type. First looks for the
-     * info in Redis, if that's not found then uses the open_location api to get the info and saves it in 
+     * info in Redis, if that's not found then uses the open_location api to get the info and saves it in
      * Redis.
      */
     protected function get($locationType, $id) {
@@ -74,7 +74,7 @@ class GetByLocationType extends Controller
                     ->join('game_users', 'game_users.id', '=', 'game_user_records.game_user_id')
                     ->join('intelligence_indicators AS intin', 'intin.id', '=', 'guri.intelligence_indicator_id')
                     ->join('intelligences', 'intelligences.id', '=', 'intin.intelligence_id')
-                    // ->select(DB::raw("ROUND(AVG(guri.percentage_value),1) as average, 
+                    // ->select(DB::raw("ROUND(AVG(guri.percentage_value),1) as average,
                     //     GROUP_CONCAT(intin.description SEPARATOR '--') AS all_desc, intelligences.name"))
                     ->select(DB::raw("guri.percentage_value, intin.description, intelligences.name, game_users.id"))
                     ->whereIn('game_users.headquarter_id', $headquarters)
@@ -100,7 +100,7 @@ class GetByLocationType extends Controller
                     ->join('game_users', 'game_users.id', '=', 'game_user_records.game_user_id')
                     ->join('description_styles AS descSt', 'descSt.id', '=', 'guri.description_style_id')
                     ->join('styles', 'styles.id', '=', 'descSt.style_id')
-                    // ->select(DB::raw("COUNT(styles.id) as average, 
+                    // ->select(DB::raw("COUNT(styles.id) as average,
                     //     GROUP_CONCAT(descSt.description SEPARATOR '--') AS all_desc, styles.name,
                     //     styles.description AS extra_name"))
                     ->select('styles.id', 'descSt.description', 'styles.name', 'styles.description AS extra_name',
@@ -129,7 +129,7 @@ class GetByLocationType extends Controller
                     ->join('intelligence_indicators AS intin', 'intin.id', '=', 'guri.intelligence_indicator_id')
                     ->join('intelligences', 'intelligences.id', '=', 'intin.intelligence_id')
                     ->join('competences', 'competences.id', '=', 'guri.competence_id')
-                    // ->select(DB::raw("ROUND(AVG(guri.percentage_value),1) as average, 
+                    // ->select(DB::raw("ROUND(AVG(guri.percentage_value),1) as average,
                     //     GROUP_CONCAT(intin.description SEPARATOR '--') AS all_desc, intelligences.name,
                     //     competences.id AS competence"))
                     ->select(DB::raw("guri.percentage_value, intin.description, intelligences.name, game_users.id,
@@ -158,8 +158,8 @@ class GetByLocationType extends Controller
                     ->join('description_styles AS descSt', 'descSt.id', '=', 'guri.description_style_id')
                     ->join('styles', 'styles.id', '=', 'descSt.style_id')
                     ->join('competences', 'competences.id', '=', 'guri.competence_id')
-                    // ->select(DB::raw("COUNT(styles.id) as average, 
-                    //     GROUP_CONCAT(descSt.description SEPARATOR '--') AS all_desc, 
+                    // ->select(DB::raw("COUNT(styles.id) as average,
+                    //     GROUP_CONCAT(descSt.description SEPARATOR '--') AS all_desc,
                     //     competences.id AS competence, styles.name, styles.description AS extra_name"))
                     ->select('styles.id', 'descSt.description', 'styles.name', 'styles.description AS extra_name',
                         'game_users.id', 'competences.id AS competence')
@@ -207,7 +207,7 @@ class GetByLocationType extends Controller
                     ->join('game_user_records', 'guri.game_user_record_id', '=', 'game_user_records.id')
                     ->join('game_users', 'game_users.id', '=', 'game_user_records.game_user_id')
                     ->join('vocationals_orientations AS vo', 'vo.id', '=', 'guri.vocational_orientation_id')
-                    // ->select(DB::raw("COUNT(styles.id) as average, 
+                    // ->select(DB::raw("COUNT(styles.id) as average,
                     //     GROUP_CONCAT(descSt.description SEPARATOR '--') AS all_desc, styles.name,
                     //     styles.description AS extra_name"))
                     ->select('vo.id', 'vo.name', 'game_users.id AS game_user', 'guri.id AS guri')
@@ -243,7 +243,7 @@ class GetByLocationType extends Controller
                         })
                         ->join('subject_mini_game AS smg', 'smg.mini_game_id', '=', 'mg.id')
                         ->join('subjects AS sub', 'sub.id', '=', 'smg.subject_id')
-                        ->select('gur.total_score', 'gu.grade_id', 'smg.subject_id', 'smg.dba', 
+                        ->select('gur.total_score', 'gu.grade_id', 'smg.subject_id', 'smg.dba',
                             'gu.id AS game_user', 'sub.name')
                         ->whereIn('gu.headquarter_id', $headquarters)
                         ->get();

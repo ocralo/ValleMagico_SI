@@ -123,6 +123,8 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+    //route url larabel
+    'mix_url' => env('MIX_ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------

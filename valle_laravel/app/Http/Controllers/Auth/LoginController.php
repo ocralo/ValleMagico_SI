@@ -22,13 +22,13 @@ class LoginController extends Controller
     use AuthenticatesUsers;
     // use Illuminate\Http\Request;
 
-   
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/si/home';
+    protected $redirectTo = 'home';
 
     /**
      * Create a new controller instance.

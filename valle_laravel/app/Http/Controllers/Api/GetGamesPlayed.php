@@ -22,7 +22,7 @@ class GetGamesPlayed extends Controller
         $less_played = $this->getMostOrLessPlayed('headquarter_id', $headquarters, 'less', $intelligences);
         $average_info = $this->getAverage('headquarter_id', $headquarters, $intelligences);
 
-        $toReturn = array('total_games' => $quantity, 'most_played'=>$most_played, 
+        $toReturn = array('total_games' => $quantity, 'most_played'=>$most_played,
                         'less_played' => $less_played, 'average'=>$average_info);
         return $toReturn;
     }
@@ -35,7 +35,7 @@ class GetGamesPlayed extends Controller
         $less_played = $this->getMostOrLessPlayed('headquarter_id', $headquarters, 'less', $intelligences);
         $average_info = $this->getAverage('headquarter_id', $headquarters, $intelligences);
 
-        $toReturn = array('total_games' => $quantity, 'most_played'=>$most_played, 
+        $toReturn = array('total_games' => $quantity, 'most_played'=>$most_played,
                         'less_played' => $less_played, 'average'=>$average_info);
         return $toReturn;
     }
@@ -105,7 +105,7 @@ class GetGamesPlayed extends Controller
         $average_array = array_values($average_array);
         $average = isset($average_array[0]) ? array_sum($average_array) / count($average_array) : 0;
 
-        $toReturn = array('total_games' => $quantity, 'most_played'=>$most_played, 
+        $toReturn = array('total_games' => $quantity, 'most_played'=>$most_played,
                         'less_played' => $less_played, 'average'=>round($average, 2));
         return $toReturn;
     }
@@ -146,7 +146,7 @@ class GetGamesPlayed extends Controller
                                 ->count();
         }
 
-        $toReturn = array('total_games' => $quantity, 'most_played'=>$most_played, 
+        $toReturn = array('total_games' => $quantity, 'most_played'=>$most_played,
                         'less_played' => $less_played, 'games_played'=>$games_played);
         return $toReturn;
     }

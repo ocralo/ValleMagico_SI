@@ -12,8 +12,7 @@
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
     --font-family-sans-serif: "Nunito", sans-serif;
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     --primayColor: #00b2bf;
     --secondColor: #00a3af;
@@ -25,7 +24,7 @@
 
 body {
     font-family: "lato";
-    background-color: var(--light) !important ;
+    background-color: var(--light) !important;
 }
 
 #HomePage {
@@ -64,10 +63,11 @@ body {
 } */
 
 .content-Bar div div {
-    transform: scaleX(0);
+    /* transform: scaleX(0); */
     transform-origin: left;
     transition: 0.2s;
 }
+
 .content-Bar:hover div div {
     transform: scaleX(1);
     transform-origin: left;
@@ -112,6 +112,7 @@ body {
     width: auto !important;
     margin: 0 !important;
 }
+
 .modal-body {
     height: 60% !important;
 }
@@ -150,6 +151,7 @@ body {
 .modal-body {
     max-height: 100% !important;
 }
+
 /* ListSearch Styles */
 
 .contentDepartment:hover .hiddenListSelect {
@@ -159,10 +161,6 @@ body {
 }
 
 .contentDepartment .hiddenListSelect:hover {
-    width: 100% !important;
-}
-
-.hiddenListSelect {
     width: 100% !important;
 }
 
@@ -251,6 +249,7 @@ body {
 }
 
 .list-tabs {
+    cursor: pointer;
     padding: 0px;
 }
 
@@ -265,7 +264,6 @@ body {
 
 .title-graph-competition {
     color: var(--coffeColor);
-    font-size: 0.9rem;
 }
 
 .tittle-tab {
@@ -377,6 +375,7 @@ body {
 .card-info {
     margin-top: 5rem !important;
 }
+
 /* Card FAQ */
 
 .card-faq-header {
@@ -404,6 +403,7 @@ body {
     width: 0;
     position: relative;
 }
+
 .file-input::before {
     content: "Select some files";
     display: inline-block;
@@ -421,9 +421,11 @@ body {
     visibility: visible;
     position: absolute;
 }
+
 .file-input:hover::before {
     border-color: black;
 }
+
 .file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
@@ -456,6 +458,7 @@ table {
     width: 20%;
     margin: 0.5em;
 }
+
 .item-conventions {
     flex-wrap: nowrap;
 }
@@ -627,31 +630,11 @@ table {
     height: 11em;
     border-radius: 50%;
     background: var(--coffeColor);
-    background: -moz-linear-gradient(
-        left,
-        var(--coffeColor) 10%,
-        rgba(0, 128, 255, 0) 42%
-    );
-    background: -webkit-linear-gradient(
-        left,
-        var(--coffeColor) 10%,
-        rgba(0, 128, 255, 0) 42%
-    );
-    background: -o-linear-gradient(
-        left,
-        var(--coffeColor) 10%,
-        rgba(0, 128, 255, 0) 42%
-    );
-    background: -ms-linear-gradient(
-        left,
-        var(--coffeColor) 10%,
-        rgba(0, 128, 255, 0) 42%
-    );
-    background: linear-gradient(
-        to right,
-        var(--coffeColor) 10%,
-        rgba(0, 128, 255, 0) 42%
-    );
+    background: -moz-linear-gradient(left, var(--coffeColor) 10%, rgba(0, 128, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, var(--coffeColor) 10%, rgba(0, 128, 255, 0) 42%);
+    background: -o-linear-gradient(left, var(--coffeColor) 10%, rgba(0, 128, 255, 0) 42%);
+    background: -ms-linear-gradient(left, var(--coffeColor) 10%, rgba(0, 128, 255, 0) 42%);
+    background: linear-gradient(to right, var(--coffeColor) 10%, rgba(0, 128, 255, 0) 42%);
     position: relative;
     -webkit-animation: load3 1.4s infinite linear;
     animation: load3 1.4s infinite linear;
@@ -659,6 +642,7 @@ table {
     -ms-transform: translateZ(0);
     transform: translateZ(0);
 }
+
 .loader:before {
     width: 50%;
     height: 50%;
@@ -669,6 +653,7 @@ table {
     left: 0;
     content: "";
 }
+
 .loader:after {
     background: var(--coffeColor);
     width: 75%;
@@ -697,16 +682,19 @@ table {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
 }
+
 @keyframes load3 {
     0% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
@@ -717,9 +705,11 @@ table {
     .img-fluid {
         margin-top: 50px;
     }
+
     .descript-introPage div {
         text-align: justify;
     }
+
     .content-Intro {
         height: auto;
     }
@@ -796,6 +786,7 @@ h1 {
     text-transform: uppercase;
     text-decoration: none;
 }
+
 .tabs-controls__link::after {
     position: absolute;
     left: 0;

@@ -8,30 +8,30 @@ use Illuminate\Support\Facades\DB;
 class TitleNames extends Controller
 {
     public function departmentName ($id) {
-        // $open_location = config('env_vars.open_location_url');
+        //$open_location = config('env_vars.open_location_url');
         $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/valle/ol/';
         $department = json_decode(file_get_contents($open_location.'api/department/'.$id), true);
         return $department;
     }
 
     public function townName ($id) {
-        // $open_location = config('env_vars.open_location_url');
+        //$open_location = config('env_vars.open_location_url');
         $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/valle/ol/';
-        $town = json_decode(file_get_contents($open_location.'api/town/'.$id), true);
+        $town = json_decode(file_get_contents($open_location.'api/towns/'.$id), true);
         return $town;
     }
 
     public function institutionName ($id) {
-        // $open_location = config('env_vars.open_location_url');
+        //$open_location = config('env_vars.open_location_url');
         $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/valle/ol/';
-        $institution = json_decode(file_get_contents($open_location.'api/institution/'.$id), true);
+        $institution = json_decode(file_get_contents($open_location.'api/institutions/'.$id), true);
         return $institution;
     }
 
     public function headquarterName ($id) {
-        // $open_location = config('env_vars.open_location_url');
+        //$open_location = config('env_vars.open_location_url');
         $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/valle/ol/';
-        $headquarter = json_decode(file_get_contents($open_location.'api/headquarter/'.$id), true);
+        $headquarter = json_decode(file_get_contents($open_location.'api/headquarters/'.$id), true);
         return $headquarter;
     }
 

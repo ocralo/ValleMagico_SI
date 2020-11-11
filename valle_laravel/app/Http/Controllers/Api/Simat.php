@@ -78,9 +78,9 @@ class Simat extends Controller
                 http_response_code(400);
                 echo json_encode(array("message" => "There was an error saving the info."));
             }
-            
+
         }
-        
+
         if ($correct_dissability_relation) {
             http_response_code(201);
             echo json_encode(array("message" => "Info saved correctly."));
@@ -96,7 +96,7 @@ class Simat extends Controller
     }
 
     protected function newHeadquarter($name, $town, $institution) {
-        // $open_location = config('env_vars.open_location_url');
+        //$open_location = config('env_vars.open_location_url');
         $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/valle/ol/';
         $data = array('name' => $name, 'town' => $town, 'institution' => $institution);
         $url = $open_location.'api/headquarters';
@@ -112,8 +112,8 @@ class Simat extends Controller
         return $result;
     }
     protected function newInstitution($name) {
-        // $open_location = config('env_vars.open_location_url');
-        $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/valle/ol/';
+        //$open_location = config('env_vars.open_location_url');
+        $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/city/ol/';
         $data = array('name' => $name);
         $url = $open_location.'api/institutions';
         $options = array(
@@ -128,7 +128,7 @@ class Simat extends Controller
         return $result;
     }
     protected function newTown($name, $zone, $town_type) {
-        // $open_location = config('env_vars.open_location_url');
+        //$open_location = config('env_vars.open_location_url');
         $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/valle/ol/';
         $data = array('department' => 2, 'name' => $name, 'zone' => $zone, 'type' => $town_type);
         $url = $open_location.'api/towns';

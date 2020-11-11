@@ -11,7 +11,7 @@ use Config;
 class GetStudents extends Controller
 {
     protected function get($locationType, $locationId) {
-        // $open_location = config('env_vars.open_location_url');
+        //$open_location = config('env_vars.open_location_url');
         $open_location = 'http://'.$_SERVER['SERVER_ADDR'].':8088/valle/ol/';
         $students_array = [];
         if ($locationType === 'department' || $locationType === 'town' || $locationType === 'institution') {
